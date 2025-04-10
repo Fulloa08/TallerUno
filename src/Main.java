@@ -1,17 +1,17 @@
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 import java.util.Scanner;
+import java.util.Random;
 
 
-public class Main {
+public static void Main(String[] args){
     static int filas;
     static int columnas;
+    static int[][] matriz;
     Scanner scanner = new Scanner(System.in);
     dimensionMatriz(scanner);
     menu();
     leerOpcion();
-
-
 
     }
     public static void menu(){
@@ -22,7 +22,7 @@ public class Main {
         System.out.println("4. Salir");
         System.out.println("Ingrese la opción:  ");
     }
-    public static void leerOpcion(){
+    public static void leerOpcion(int[][] matriz){
         Scanner scanner = new Scanner(System.in);
         int opcion = 0;
         opcion = scanner.nextInt();
@@ -31,10 +31,12 @@ public class Main {
 
             switch (opcion) {
                 case 1:
-                    dimensionesMatriz();
+                    dimensionMatriz(scanner);
                     break;
                 case 2:
-                    mostrarFila();
+                    System.out.println("Ingrese la fila a buscar:  ");
+                    String busqueda = scanner.next();
+                    mostrarFila(busqueda, matriz);
                     break;
                 case 3:
                     matrizCero();
@@ -48,13 +50,21 @@ public class Main {
     }
 
 
-    public int[][] crearMatriz(int filas, int cols){
+    public int[][] crearMatriz(int filas, int columnas){
+        return new int[filas][columnas];
 
     }
-    public static void llenarMatriz(int matriz [][]){
+    public static void llenarMatriz(int[][] matriz){
+        Random random = new Random();
+        for (int i = 0; i <matriz.length; i++){
+            for (int j = 0; j <matriz.length; j++){
+                matriz[i][j] = (int) (Math.random()*10);
+            }
+        }
 
     }
-    public boolean matrizCero (int matriz[][]){
+    public boolean matrizCero (int[][] matriz){
+
 
     }
     public static void dimensionMatriz(Scanner scanner){
@@ -66,7 +76,8 @@ public class Main {
 
 
     }
-    public static void mostrarFila( int matriz[][]){
+    public static int[] mostrarFila(String busqueda, int[][] matriz){
+
 
     }
     public static boolean validarDimensiones(int fls, int cols){
